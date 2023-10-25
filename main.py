@@ -6,7 +6,18 @@ def display_menu():
     print('1. Encode\n2. Decode\n3. Quit\n')
 
 def encode(password):
-    pass
+    encoded_pw = ''
+    for char in password:
+        if int(char) <= 6:
+            char = int(char) + 3
+        elif char == '7':
+            char = '0'
+        elif char == '8':
+            char = '1'
+        elif char == '9':
+            char = '2'
+        encoded_pw += str(char)
+    return encoded_pw
 
 def decode(password):
     pass
@@ -23,10 +34,13 @@ def main():
             print('Your password has been encoded and stored!\n')
         elif user_option == 2:
             decoded_pw = decode(user_pw)
-            print(f'The encoded password is {encoded_pw}, and the original password is {original_pw}.\n')
+            print(f'The encoded password is {encoded_pw}, and the original password is {decoded_pw}.\n')
         elif user_option == 3:
             break
-        original_pw = user_pw
+        else:
+            print('Invalid selection.')
+            display_menu()
+            user_option = int(input('Please enter an option: '))
 
 if __name__ == '__main__':
     main()
