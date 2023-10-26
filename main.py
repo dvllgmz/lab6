@@ -25,9 +25,15 @@ def encode(password):
         encoded_pw += str(char)
     return encoded_pw
 
-# decode function with user-inputted password as parameter
+# decode function with user-inputted password as parameter. Priyanka did this part.
 def decode(password):
-    pass
+    result = ""
+    for digit in password:
+        # each digit in the 8-digit password is turned into an integer and then increased by 7 and moduled by 10.
+        # It is then converted back to a string.
+        result_digit = str((int(digit) - 3) % 10)
+        result += result_digit
+    return result
 
 def main():
     # loop program while user chooses to continue
@@ -48,7 +54,7 @@ def main():
 
         # user chooses to decode password
         elif user_option == 2:
-            decoded_pw = decode(user_pw)
+            decoded_pw = decode(encoded_pw)
             print(f'The encoded password is {encoded_pw}, and the original password is {decoded_pw}.\n')
         # user chooses to quit program, break loop
         elif user_option == 3:
