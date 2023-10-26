@@ -39,8 +39,13 @@ def main():
         # user chooses to encode password
         if user_option == 1:
             user_pw = input('Please enter your password to encode: ')
-            encoded_pw = encode(user_pw)
-            print('Your password has been encoded and stored!\n')
+            # check for password requirements (numeric and 8 digits)
+            if user_pw.isnumeric() and len(user_pw) == 8:
+                encoded_pw = encode(user_pw)
+                print('Your password has been encoded and stored!\n')
+            else:
+                print('Invalid entry.\n')
+
         # user chooses to decode password
         elif user_option == 2:
             decoded_pw = decode(user_pw)
@@ -51,7 +56,6 @@ def main():
         # user inputs invalid selection during menu prompt
         else:
             print('Invalid selection.\n')
-            display_menu()
-            user_option = int(input('Please enter an option: '))
+
 if __name__ == '__main__':
     main()
